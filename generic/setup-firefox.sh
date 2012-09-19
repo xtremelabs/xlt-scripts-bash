@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 source helper-functions.sh
+source constants.sh
 
 #Assume wget is installed
 #Install Firefox
@@ -8,6 +9,7 @@ if [ -d /Applications/Firefox.app/ ]
 then
 	echo "Firefox is already installed.";
 else
+	install_success="n"
 	echo "Downloading Firefox..."
 	wget http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/latest/mac/en-US/"$FIREFOX_VERSION"
 	url_verify "Firefox"
@@ -15,8 +17,20 @@ else
 	#install firefox
 	hdiutil mount "$FIREFOX_VERSION"
 	sudo cp -R "/Volumes/Firefox/Firefox.app" /Applications
+
+	if [[ $? -eq 0 ]]
+	then
+		install_success="y"
+	fi
+
 	hdiutil unmount "/Volumes/Firefox/"
-	echo "Firefox is installed"
+	rm -rf "$FIREFOX_VERSION"
+	if [ $install_success == "y" ]
+	then
+		echo "Firefox is installed"
+	else
+		echo "Firefox installation failed"
+	fi
 fi
 
 

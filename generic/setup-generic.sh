@@ -27,72 +27,78 @@ echo "Copying public key to clipboard. Paste it into your Github account ..."
 [[ -f ~/.ssh/github_rsa.pub ]] && cat ~/.ssh/github_rsa.pub | pbcopy
 open https://github.com/account/ssh
 
+# Delay for 5 seconds until git config page opens
+sleep 5;
+ 
+#Install Developer tools (depending on mac osx version)
+MAC_VERSION=$(defaults read loginwindow SystemVersionStampAsString);
+
+clt_image_location=""
+if [[ "$MAC_VERSION" == 10.8.* ]]
+then 
+   clt_image_location="../assets/command_line_tools_for_xcode_os_x_mountain_lion_aug_2012.dmg"
+else
+   clt_image_location="../assets/command_line_tools_for_xcode_os_x_lion_aug_2012.dmg"
+fi
+
+continueInst="n"
+while [[ $continueInst == 'n' ]]; do
+  open "$clt_image_location"
+  # Delay prompt for 5 seconds until CLT image begins inflating
+  sleep 5;
+  echo "Please install Command Line Tools for Xcode. It may take a moment to open the dmg."
+  read -p "Do you have Command Line tools for Xcode installed now? (y/n) > " continueInst
+  if [ $continueInst == "y" ]
+  then
+    echo "Continuing installation"
+  else
+    #echo "Please install Command Line Tools from the mounted image"
+    echo "Retrying to install Command Line Tools"
+  fi
+done
+
 #Install Homebrew
-echo "Installing Homebrew, a good OS X package manager ..."
-ruby <(curl -fsS https://raw.github.com/mxcl/homebrew/go)
-brew update
+command -v brew > /dev/null 2>&1 || {
+  echo "Installing Homebrew, a good OS X package manager ..."
+  ruby <(curl -fsS https://raw.github.com/mxcl/homebrew/go)
+  brew update
+}
+
+if [ $? -eq 0 ]
+then
+  echo "Brew doctor'ing"
+  brew doctor
+fi
 
 #Setup github user and email fields (install git if appropriate too)
 command -v git >/dev/null 2>&1 || {
 	echo "Installing git..."
 	brew install git
 }
+echo "
+git is installed"
 chmod u+x gconfig.sh
 ./gconfig.sh
 
 
 #Install wget using homebrew
+echo "Installing wget from homebrew"
 brew install wget
 
+#Setup Chrome
+chmod u+x setup-chrome.sh
+./setup-chrome.sh
 
-#Install Chrome
-if [ -d /Applications/Google\ Chrome.app/ ]
-then
-	echo "Google Chrome is already installed.";
-else
-	echo "Downloading Chrome..."
-	wget https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg --no-check-certificate
-	url_verify "Chrome"
-	echo "Installing Chrome..."
-	#install chrome
-	hdiutil mount googlechrome.dmg
-	sudo cp -R "/Volumes/Google Chrome/Google Chrome.app" /Applications
-	hdiutil unmount "/Volumes/Google Chrome/"
-	echo "Google Chrome is installed"
-fi
-
-
-#Update Chrome bookmarks
-
-
-#Install Firefox
-if [ -d /Applications/Firefox.app/ ]
-then
-	echo "Firefox is already installed.";
-else
-	echo "Downloading Firefox..."
-	wget http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/latest/mac/en-US/"$FIREFOX_VERSION"
-	url_verify "Firefox"
-	echo "Installing Firefox..."
-	#install firefox
-	hdiutil mount "$FIREFOX_VERSION"
-	sudo cp -R "/Volumes/Firefox/Firefox.app" /Applications
-	hdiutil unmount "/Volumes/Firefox/"
-	echo "Firefox is installed"
-fi
-
-
-#Update Firefox bookmarks
-
-
+#Setup Firefox
+chmod u+x setup-firefox.sh
+./setup-firefox.sh
 
 #Update Safari bookmarks
-
-
 
 #Bookmarks - Wiki, Internal, etc
 # http://mail.xtremelabs.com
 # http://wiki.xtremelabs.com
 # http://temperature.xtremelabs.com
 # http://builds.xtremelabs.com
-
+# http://www.pivotaltracker.com
+# http://allocations.pivotallabs.com

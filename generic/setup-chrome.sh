@@ -8,6 +8,7 @@ if [ -d /Applications/Google\ Chrome.app/ ]
 then
 	echo "Google Chrome is already installed.";
 else
+	install_success="n"
 	echo "Downloading Chrome..."
 	wget https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg --no-check-certificate
 	url_verify "Chrome"
@@ -15,8 +16,21 @@ else
 	#install chrome
 	hdiutil mount googlechrome.dmg
 	sudo cp -R "/Volumes/Google Chrome/Google Chrome.app" /Applications
+
+	if [[ $? -eq 0 ]]
+	then
+		install_success="y"
+	fi
+
+	rm -rf "googlechrome.dmg"
 	hdiutil unmount "/Volumes/Google Chrome/"
-	echo "Google Chrome is installed"
+
+	if [ $install_success == "y" ]
+	then
+		echo "Google Chrome is installed"
+	else
+		echo "Google Chrome installation failed"
+	fi
 fi
 
 
