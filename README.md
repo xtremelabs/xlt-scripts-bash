@@ -1,6 +1,6 @@
-This is a script to quickly set up your typical environment on Mac OS X.
+This is a collection of scripts to quickly set up your environment on Mac OS X.
 
-# What it does
+# Generic: What it does
 --------------
 It will do the following, if necessary:
 * save and generate SSH keys
@@ -12,13 +12,14 @@ It will do the following, if necessary:
 * install Firefox
 
 
-# How to use
+# Generic: How to use
 ------------
 
 This script is designed to run on a fresh install of a Mac OS X. It was tested on Lion.
 
 To run the script:
-<pre>chmod u+x setup-generic.sh
+<pre>cd generic
+chmod u+x setup-generic.sh
 ./setup-generic.sh</pre>
 
 
