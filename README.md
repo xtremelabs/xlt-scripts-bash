@@ -18,12 +18,11 @@ It will do the following, if necessary:
 This script is designed to run on a fresh install of a Mac OS X. It was tested on Lion.
 
 To run the script:
-    chmod u+x setup-generic.sh
-    ./setup-generic.sh
+<pre>chmod u+x setup-generic.sh
+./setup-generic.sh</pre>
 
 
-While this is an automated script, there requires some user interaction. 
-You will need to:
+There requires some user interaction. You will need to:
 * save and generate your SSH keys and paste into GitHub
 * setup your git account information on GitHub
 * configure git-config with your account information
