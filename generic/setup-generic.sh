@@ -115,7 +115,6 @@ echo "=========="
 chmod u+x setup-firefox.sh
 ./setup-firefox.sh
 
-exit
 
 #Update Safari bookmarks
 
