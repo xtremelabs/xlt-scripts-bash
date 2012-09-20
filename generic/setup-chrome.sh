@@ -19,6 +19,7 @@ else
 
 	if [[ $? -eq 0 ]]
 	then
+		echo "GOOGLE CHROME: Install SUCCESS"
 		install_success="y"
 	fi
 
@@ -29,7 +30,7 @@ else
 	then
 		echo "Google Chrome is installed"
 	else
-		echo "Google Chrome installation failed"
+		echo "Google Chrome installation FAILED"
 	fi
 fi
 

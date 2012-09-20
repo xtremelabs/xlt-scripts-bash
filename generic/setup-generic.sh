@@ -3,8 +3,10 @@
 source helper-functions.sh
 source constants.sh
 
+###############################
+
 #Retrieve SSH keys
-echo "Checking for SSH key, generating one if it doesn't exist ..."
+echo "Checking for SSH key"
 if [ -f "$RSA_KEY_LOC" ]
 then
    #Extract github identity in key given $1 (first line of grep output)
@@ -19,6 +21,7 @@ then
    done
    reply=""
 else
+   echo "No SSH key found. Generating new key"
    ssh-keygen -t rsa;
 fi
 
@@ -27,13 +30,16 @@ echo "Copying public key to clipboard. Paste it into your Github account ..."
 [[ -f ~/.ssh/github_rsa.pub ]] && cat ~/.ssh/github_rsa.pub | pbcopy
 open https://github.com/account/ssh
 
-# Delay for 5 seconds until git config page opens
+# Delay for 5 seconds until github account page opens
 sleep 5;
+
  
 #Install Developer tools (depending on mac osx version)
 MAC_VERSION=$(defaults read loginwindow SystemVersionStampAsString);
 
 clt_image_location=""
+echo ""
+echo "=========="
 if [[ "$MAC_VERSION" == 10.8.* ]]
 then 
    clt_image_location="../assets/command_line_tools_for_xcode_os_x_mountain_lion_aug_2012.dmg"
@@ -44,7 +50,7 @@ fi
 continueInst="n"
 while [[ $continueInst == 'n' ]]; do
   open "$clt_image_location"
-  # Delay prompt for 5 seconds until CLT image begins inflating
+  # Delay prompt for 5 seconds until CLT image begins opening
   sleep 5;
   echo "Please install Command Line Tools for Xcode. It may take a moment to open the dmg."
   read -p "Do you have Command Line tools for Xcode installed now? (y/n) > " continueInst
@@ -57,41 +63,59 @@ while [[ $continueInst == 'n' ]]; do
   fi
 done
 
+
 #Install Homebrew
 command -v brew > /dev/null 2>&1 || {
+  echo ""
+  echo "=========="
   echo "Installing Homebrew, a good OS X package manager ..."
   ruby <(curl -fsS https://raw.github.com/mxcl/homebrew/go)
-  brew update
 }
 
-if [ $? -eq 0 ]
+if [ $? -ne 0 ]
 then
-  echo "Brew doctor'ing"
-  brew doctor
+  echo "Homebrew install FAILED"
+  exit 1
 fi
 
+#Needed before using Homebrew to install
+echo "Brewing preparation"
+brew update
+brew doctor
+
+echo ""
+echo "=========="
 #Setup github user and email fields (install git if appropriate too)
 command -v git >/dev/null 2>&1 || {
 	echo "Installing git..."
 	brew install git
 }
-echo "
-git is installed"
+echo "git is installed"
 chmod u+x gconfig.sh
 ./gconfig.sh
 
 
 #Install wget using homebrew
+echo ""
+echo "=========="
 echo "Installing wget from homebrew"
 brew install wget
 
+
 #Setup Chrome
+echo ""
+echo "=========="
 chmod u+x setup-chrome.sh
 ./setup-chrome.sh
 
+
 #Setup Firefox
+echo ""
+echo "=========="
 chmod u+x setup-firefox.sh
 ./setup-firefox.sh
+
+exit
 
 #Update Safari bookmarks
 

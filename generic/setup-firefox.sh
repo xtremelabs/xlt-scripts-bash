@@ -20,6 +20,7 @@ else
 
 	if [[ $? -eq 0 ]]
 	then
+		echo "FIREFOX: Install SUCCESS"
 		install_success="y"
 	fi
 
@@ -29,7 +30,7 @@ else
 	then
 		echo "Firefox is installed"
 	else
-		echo "Firefox installation failed"
+		echo "Firefox installation FAILED"
 	fi
 fi
 
