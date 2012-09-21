@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source helper-functions.sh
+source ../common/helper-functions.sh
 
 #Assume wget is installed
 #Install Chrome

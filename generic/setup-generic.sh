@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-source helper-functions.sh
-source constants.sh
+source ../common/helper-functions.sh
+source ../common/constants.sh
 
 ###############################
 
@@ -57,6 +57,7 @@ while [[ $continueInst == 'n' ]]; do
   if [ $continueInst == "y" ]
   then
     echo "Continuing installation"
+    hdiutil unmount "/Volumes/Command Line Tools (Lion)/"
   else
     #echo "Please install Command Line Tools from the mounted image"
     echo "Retrying to install Command Line Tools"

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-source helper-functions.sh
-source constants.sh
+source ../common/helper-functions.sh
+source ../common/constants.sh
 
 #Assume wget is installed
 #Install Firefox
@@ -26,6 +26,7 @@ else
 
 	hdiutil unmount "/Volumes/Firefox/"
 	rm -rf "$FIREFOX_VERSION"
+
 	if [ $install_success == "y" ]
 	then
 		echo "Firefox is installed"
