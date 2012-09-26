@@ -31,4 +31,12 @@ There requires some user interaction. You will need to:
 * acknowledge installation of Homebrew
 * enter the password to install Chrome/Firefox
 
-Note: Do NOT run the script as sudo. Homebrew will refuse to install as root and subsequently, the script will not install everything. 
+Note: Do NOT run the script as sudo. Homebrew will refuse to install as root and subsequently, the script will not install everything.
+
+# Ruby: What it does
+-------------
+Installs everything http://tech.xtremelabs.com/how-to-setup-your-mac-for-rails-development/ mentions either with RVM or RBENV (selected on startup)
+
+For subsequent runs of the script, most applications detect if they are already installed, and user is prompted whether they want to delete and replace their bash_profile script since the script concatenates most entries programs require.
+
+Users are encouraged to check application caveats through brew info <application name> to see if they need to perform any additional steps to configure the installation. 

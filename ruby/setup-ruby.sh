@@ -7,9 +7,19 @@ echo "2. RVM"
 
 reply=""
 while [[ "$reply" != '1' && "$reply" != '2' ]]; do
-  read -p "Enter 1 or 2 to select which one install > " reply
-  echo "$reply"
+  read -p "Enter 1 or 2 to select which one to install > " reply
+  echo "You entered: $reply"
 done
+
+delconf=""
+while [[ "$delconf" != 'y' && "$delconf" != 'n' ]]; do
+  read -p "Would you like to delete your existing .bash_profile file? > (y/n) " delconf
+  echo "You entered: $delconf"
+done
+
+if [[ "$delconf" == 'y' ]]; then
+  rm -rf ~/.bash_profile
+fi
 
 if [[ "$reply" == '1' ]]; then
   chmod u+x setup-rbenv.sh

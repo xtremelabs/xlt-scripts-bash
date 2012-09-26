@@ -116,9 +116,6 @@ echo "=========="
 chmod u+x setup-firefox.sh
 ./setup-firefox.sh
 
-
-#Update Safari bookmarks
-
 #Bookmarks - Wiki, Internal, etc
 # http://mail.xtremelabs.com
 # http://wiki.xtremelabs.com
@@ -126,3 +123,11 @@ chmod u+x setup-firefox.sh
 # http://builds.xtremelabs.com
 # http://www.pivotaltracker.com
 # http://allocations.pivotallabs.com
+cp "../assets/Chrome Bookmarks.html" ~/Desktop
+cp "../assets/Firefox Bookmarks.html" ~/Desktop
+echo "Chrome and Firefox bookmarks copied to your desktop - please reimport if required."
+
+#Update Safari bookmarks
+#Currently not done as they are stored as separate files in <user>/Library/Caches/Metadata/Safari/Bookmarks and there's no safer way to export them than to backup those files
+
+echo "All done!"

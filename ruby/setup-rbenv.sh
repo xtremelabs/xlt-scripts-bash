@@ -1,43 +1,57 @@
 #!/usr/bin/env bash
 
 source ../common/helper-functions.sh
-
-RUBY_VERSION="1.9.3-p194"
-TOTALTERMINAL="TotalTerminal-1.3.dmg"
-
+source ../common/constants.sh
 
 echo "Starting installation with rbenv - implementing"
 
-brew install rbenv ruby-build
+brew install rbenv
 
-echo "=========="
-echo "Fulfilling Homebrew caveat for rbenv"
-if [[ ! -f ~/.bash_profile ]]; then
-  echo "need to create .bash_profile"
-  touch ~/.bash_profile
+if [[ $? -eq 0 || -e /usr/local/bin/rbenv ]]
+then
+  #To enable shims and autocompletion, add rbenv init to your profile
+  echo "=========="
+  echo "Fulfilling Homebrew caveat for rbenv"
+  if [[ ! -f ~/.bash_profile ]]; then
+    echo "need to create .bash_profile"
+    touch ~/.bash_profile
+  else
+    echo ".bash_profile found"
+  fi
+
+  #echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
+  source ~/.bash_profile
+
+  if [[ ! -e /usr/local/bin/ruby-build ]]
+  then
+    brew install ruby-build
+  else
+    echo "ruby-build already installed."
+  fi
+  
+  echo ""
+  echo "=========="
+  echo "Installing Ruby $RUBY_VERSION..."
+  if [[ ! -d "~/.rbenv/versions/$RUBY_VERSION" ]]
+  then
+    rbenv install "$RUBY_VERSION"
+    rbenv global "$RUBY_VERSION"
+    ruby -v
+  else
+    echo "Ruby version $RUBY_VERSION already installed locally."
+  fi
+
+  echo ""
+  echo "=========="
+  echo "Installing useful gems"
+  gem install bundler pry
 else
-  echo ".bash_profile found"
+  echo "Rbenv installation failed. Please retry later."
 fi
 
-echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
-source ~/.bash_profile
-
 echo ""
 echo "=========="
-echo "Installing Ruby $RUBY_VERSION..."
-rbenv install "$RUBY_VERSION"
-rbenv global "$RUBY_VERSION"
-ruby -v
-
-echo ""
-echo "=========="
-echo "Installing useful gems"
-gem install bundler pry
-
-
-echo ""
-echo "=========="
-echo "Installing common databases"
+echo "Installing common databases and tools"
 brew install postgres mysql mongodb redis memcached
 
 
@@ -46,7 +60,10 @@ echo "=========="
 
 if [ -d /Applications/TotalTerminal.app/ ]
 then
-  echo "TotalTerminal is already installed.";
+  echo "TotalTerminal is already installed."
+
+  chmod u+x setup-rbenv-resume.sh
+  ./setup-rbenv-resume.sh
 else
   install_success="n"
   echo "Downloading TotalTerminal..."
@@ -59,7 +76,7 @@ else
   chmod u+x setup-rbenv-resume.sh
 
   echo "Go through the installation instructions."
-  echo "When finished installing TotalTerminal, do: ./setup-rbenv-resume.sh"
+  echo "When finished installing TotalTerminal, run: ./setup-rbenv-resume.sh"
 fi
 
 exit
