@@ -12,15 +12,16 @@ then
   #To enable shims and autocompletion, add rbenv init to your profile
   echo "=========="
   echo "Fulfilling Homebrew caveat for rbenv"
-  if [[ ! -f ~/.bash_profile ]]; then
+  if [[ ! -f $HOME/.bash_profile ]]; then
     echo "need to create .bash_profile"
-    touch ~/.bash_profile
+    touch $HOME/.bash_profile
   else
     echo ".bash_profile found"
   fi
 
-  #echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
-  source ~/.bash_profile
+  #echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> $HOME/.bash_profile
+  #bash_profile most likely empty at this point => no need to source
+  #source $HOME/.bash_profile
 
   if [[ ! -e /usr/local/bin/ruby-build ]]
   then
@@ -32,7 +33,7 @@ then
   echo ""
   echo "=========="
   echo "Installing Ruby $RUBY_VERSION..."
-  if [[ ! -d "~/.rbenv/versions/$RUBY_VERSION" ]]
+  if [[ ! -d "$HOME/.rbenv/versions/$RUBY_VERSION" ]]
   then
     rbenv install "$RUBY_VERSION"
     rbenv global "$RUBY_VERSION"

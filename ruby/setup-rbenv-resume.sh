@@ -80,7 +80,7 @@ else
   echo "Macvim installation failed. Please retry by rerunning script or through \"brew install macvim\""
 fi
 
-#try to link apps installed in non-standard locations to ~/Applications
+#try to link apps installed in non-standard locations to /Applications
 brew linkapps
 
 echo "NOTE the caveats from Homebrew (visible with \"brew info <application from below>\"). Make sure to read all of them and do what is necessary."

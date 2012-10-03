@@ -23,5 +23,4 @@ C_BG_BLUE="\[\033[44m\]"
 C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
- 
 export PS1="\n$C_DARKGRAY[$C_RED\$(rbenv version-name)$C_DARKGRAY] \$(vcprompt -f '$C_DARKGRAY[$C_GREEN%n:%b%m%u$C_DARKGRAY] ')$C_PURPLE\u$C_DARKGRAY @ $C_BLUE\h $C_DARKGRAY: $C_LIGHTYELLOW\w\n$C_DARKGRAY\$$C_DEFAULT "
