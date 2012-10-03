@@ -11,16 +11,6 @@ while [[ "$reply" != '1' && "$reply" != '2' ]]; do
   echo "You entered: $reply"
 done
 
-delconf=""
-while [[ "$delconf" != 'y' && "$delconf" != 'n' ]]; do
-  read -p "Would you like to delete your existing .bash_profile file? > (y/n) " delconf
-  echo "You entered: $delconf"
-done
-
-if [[ "$delconf" == 'y' ]]; then
-  rm -rf ~/.bash_profile
-fi
-
 if [[ "$reply" == '1' ]]; then
   chmod u+x setup-rbenv.sh
   ./setup-rbenv.sh

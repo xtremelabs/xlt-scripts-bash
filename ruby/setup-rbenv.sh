@@ -3,7 +3,17 @@
 source ../common/helper-functions.sh
 source ../common/constants.sh
 
-echo "Starting installation with rbenv - implementing"
+echo "Starting installation with rbenv"
+
+delconf=""
+while [[ "$delconf" != 'y' && "$delconf" != 'n' ]]; do
+  read -p "Would you like to delete your existing .bash_profile file? > (y/n) " delconf
+  echo "You entered: $delconf"
+done
+
+if [[ "$delconf" == 'y' ]]; then
+  rm -rf ~/.bash_profile
+fi
 
 brew install rbenv
 

@@ -18,21 +18,21 @@ brew install mercurial
 brew install --HEAD vcprompt
 
 #in Tanzeeb's tutorial but isn't working =(
-#cat colours_bashprofile.sh >> ~/.bash_profile
+#cat colours_bashprofile.sh >> $HOME/.bash_profile
 
-if [[ ! -f ~/.bash_profile ]]
+if [[ ! -f $HOME/.bash_profile ]]
 then
-  touch ~/.bash_profile
+  touch $HOME/.bash_profile
 fi
 
 #setup bash prompt
-cat colours_bashprofile_rvm.sh >> ~/.bash_profile
+cat colours_bashprofile_rvm.sh >> $HOME/.bash_profile
 
 #Setup Tomorrow Night theme (via https://github.com/chriskempson/tomorrow-theme/tree/master/OS%20X%20Terminal)
 open "Tomorrow Night.terminal"
 
 #add color to default commands like ls
-echo "export CLICOLOR=1" >> ~/.bash_profile
+echo "export CLICOLOR=1" >> $HOME/.bash_profile
 
 #add color to git output
 git config --global color.ui true
@@ -41,7 +41,7 @@ git config --global color.ui true
 brew install bash-completion
 echo "if [ -f `brew --prefix`/etc/bash_completion ]; then
 . `brew --prefix`/etc/bash_completion
-fi" >> ~/.bash_profile
+fi" >> $HOME/.bash_profile
 
 #zsh setup omitted, but if you want to pursue, check Oh-my-zsh (https://github.com/robbyrussell/oh-my-zsh/)
 
@@ -69,19 +69,25 @@ then
   curl -Lo- https://bit.ly/janus-bootstrap | bash
 
   #install few more plugins and configure colors
-  mkdir ~/.janus && cd ~/.janus
+  mkdir $HOME/.janus && cd $HOME/.janus
   git clone https://github.com/bbommarito/vim-slim # Syntax highlighting for Slim templates
   git clone https://github.com/godlygeek/tabular   # Easy formatting for tables, useful for Cucumber features
   #go back to previous script dir and copy vim color assets from saved tomorrow-theme
   cd -
-  cp -R ../assets/vim ~/.janus/tomorrow-theme
-  echo "color tomorrow-night" > ~/.vimrc.after
+  cp -R ../assets/vim $HOME/.janus/tomorrow-theme
+  echo "color tomorrow-night" > $HOME/.vimrc.after
 else
   echo "Macvim installation failed. Please retry by rerunning script or through \"brew install macvim\""
 fi
 
 #try to link apps installed in non-standard locations to /Applications
 brew linkapps
+
+echo ""
+echo "Copying bookmarks to Desktop. Please import them into Firefox/Chrome as necessary"
+cp "../assets/Chrome Bookmarks.html" "$HOME/Desktop/"
+cp "../assets/Firefox Bookmarks.html" "$HOME/Desktop/"
+echo ""
 
 echo "NOTE the caveats from Homebrew (visible with \"brew info <application from below>\"). Make sure to read all of them and do what is necessary."
 echo "1. postgres"
