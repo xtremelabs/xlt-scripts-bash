@@ -27,7 +27,7 @@ fi
 
 #Copy key contents and open github config page
 echo "Copying public key to clipboard. Paste it into your Github account ..."
-[[ -f ~/.ssh/github_rsa.pub ]] && cat ~/.ssh/github_rsa.pub | pbcopy
+[[ -f $HOME/.ssh/github_rsa.pub ]] && cat $HOME/.ssh/github_rsa.pub | pbcopy
 open https://github.com/account/ssh
 
 # Delay for 5 seconds until github account page opens
@@ -123,9 +123,9 @@ chmod u+x setup-firefox.sh
 # http://builds.xtremelabs.com
 # http://www.pivotaltracker.com
 # http://allocations.pivotallabs.com
-cp "../assets/Chrome Bookmarks.html" ~/Desktop
-cp "../assets/Firefox Bookmarks.html" ~/Desktop
-echo "Chrome and Firefox bookmarks copied to your desktop - please reimport if required."
+cp "../assets/Chrome Bookmarks.html" $HOME/Desktop
+cp "../assets/Firefox Bookmarks.html" $HOME/Desktop
+echo "Chrome and Firefox bookmarks copied to your Desktop - please reimport if required."
 
 #Update Safari bookmarks
 #Currently not done as they are stored as separate files in <user>/Library/Caches/Metadata/Safari/Bookmarks and there's no safer way to export them than to backup those files

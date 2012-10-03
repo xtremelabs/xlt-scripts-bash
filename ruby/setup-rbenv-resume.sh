@@ -61,6 +61,7 @@ then
 else
    echo "Please install MacVim manually (e.g. visit https://github.com/b4winckler/macvim/downloads) as only Mountain Lion and Lion binaries are included as assets"
 fi
+echo "Copying MacVim - please enter your root password"
 sudo cp -R "$mvim_image_location" "/Applications/MacVim.app"
 
 if [[ $? -eq 0 || -d /Applications/MacVim.app ]]
@@ -82,12 +83,6 @@ fi
 
 #try to link apps installed in non-standard locations to /Applications
 brew linkapps
-
-echo ""
-echo "Copying bookmarks to Desktop. Please import them into Firefox/Chrome as necessary"
-cp "../assets/Chrome Bookmarks.html" "$HOME/Desktop/"
-cp "../assets/Firefox Bookmarks.html" "$HOME/Desktop/"
-echo ""
 
 echo "NOTE the caveats from Homebrew (visible with \"brew info <application from below>\"). Make sure to read all of them and do what is necessary."
 echo "1. postgres"

@@ -10,7 +10,7 @@ while [[ "$delconf" != 'y' && "$delconf" != 'n' ]]; do
 done
 
 if [[ "$delconf" == 'y' ]]; then
-  rm -rf ~/.bash_profile
+  rm -rf $HOME/.bash_profile
 fi
 
 #install rvm and ruby-build + anything else mgr specific
