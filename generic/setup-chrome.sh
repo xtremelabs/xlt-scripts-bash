@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-source ../common/helper-functions.sh
+curl -O https://raw.github.com/xtremelabs/xlt-scripts-bash/master/common/helper-functions.sh 1>/dev/null 2>/dev/null
+source helper-functions.sh
+rm -rf helper-functions.sh
 
 #Assume wget is installed
 #Install Chrome

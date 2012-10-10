@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
-source ../common/helper-functions.sh
-source ../common/constants.sh
+curl -O https://raw.github.com/xtremelabs/xlt-scripts-bash/master/common/helper-functions.sh 1>/dev/null 2>/dev/null
+source helper-functions.sh
+rm -rf helper-functions.sh
+
+curl -O https://raw.github.com/xtremelabs/xlt-scripts-bash/master/common/constants.sh 1>/dev/null 2>/dev/null
+source constants.sh
+rm -rf constants.sh
 
 delconf=""
 while [[ "$delconf" != 'y' && "$delconf" != 'n' ]]; do
@@ -62,6 +67,7 @@ if [ -d /Applications/TotalTerminal.app/ ]
 then
   echo "TotalTerminal is already installed."
 
+  curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/ruby/setup-rvm-resume.sh" 1>/dev/null 2>/dev/null
   chmod u+x setup-rvm-resume.sh
   ./setup-rvm-resume.sh
 else
@@ -73,6 +79,7 @@ else
   hdiutil mount "$TOTALTERMINAL"
   open "/Volumes/TotalTerminal/TotalTerminal.pkg"
 
+  curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/ruby/setup-rvm-resume.sh" 1>/dev/null 2>/dev/null
   chmod u+x setup-rvm-resume.sh
 
   echo "Go through the installation instructions."

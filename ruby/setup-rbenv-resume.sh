@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-source ../common/constants.sh
+curl -O https://raw.github.com/xtremelabs/xlt-scripts-bash/master/common/constants.sh 1>/dev/null 2>/dev/null
+source constants.sh
+rm -rf constants.sh
 
 echo "This is resuming the setup of your development environment for Rails."
 
@@ -17,19 +19,20 @@ hdiutil unmount "/Volumes/TotalTerminal/" 2>/dev/null
 brew install mercurial
 brew install --HEAD vcprompt
 
-#in Tanzeeb's tutorial but isn't working =(
-#cat colours_bashprofile.sh >> $HOME/.bash_profile
-
 if [[ ! -f $HOME/.bash_profile ]]
 then
   touch $HOME/.bash_profile
 fi
 
 #setup bash prompt
+curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/ruby/colours_bashprofile_rbenv.sh" 1>/dev/null 2>/dev/null
 cat colours_bashprofile_rbenv.sh >> $HOME/.bash_profile
+rm -rf colours_bashprofile_rbenv.sh
 
 #Setup Tomorrow Night theme (via https://github.com/chriskempson/tomorrow-theme/tree/master/OS%20X%20Terminal)
+curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/ruby/Tomorrow Night.terminal" 1>/dev/null 2>/dev/null
 open "Tomorrow Night.terminal"
+rm -rf "Tomorrow Night.terminal"
 
 #add color to default commands like ls
 echo "export CLICOLOR=1" >> $HOME/.bash_profile
@@ -53,11 +56,13 @@ mvim_image_location=""
 echo ""
 echo "=========="
 if [[ "$MAC_VERSION" == 10.8.* ]]
-then 
-   mvim_image_location="../assets/MacVim macosx 107 snapshot 64.app"
+then
+   curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/assets/MacVim macosx 107 snapshot 64.app" 1>/dev/null 2>/dev/null
+   mvim_image_location="MacVim macosx 107 snapshot 64.app"
 elif [[ "$MAC_VERSION" == 10.7.* ]]
 then
-   mvim_image_location="../assets/MacVim macosx 107 snapshot 64.app"
+   curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/assets/MacVim macosx 107 snapshot 64.app" 1>/dev/null 2>/dev/null
+   mvim_image_location="MacVim macosx 107 snapshot 64.app"
 else
    echo "Please install MacVim manually (e.g. visit https://github.com/b4winckler/macvim/downloads) as only Mountain Lion and Lion binaries are included as assets"
 fi
@@ -75,7 +80,10 @@ then
   git clone https://github.com/godlygeek/tabular   # Easy formatting for tables, useful for Cucumber features
   #go back to previous script dir and copy vim color assets from saved tomorrow-theme
   cd -
-  cp -R ../assets/vim $HOME/.janus/tomorrow-theme
+  curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/assets/vim.zip" 1>/dev/null 2>/dev/null
+  unzip vim.zip
+  cp -R vim $HOME/.janus/tomorrow-theme
+  rm -rf vim vim.zip
   echo "color tomorrow-night" > $HOME/.vimrc.after
 else
   echo "Macvim installation failed. Please retry by rerunning script or through \"brew install macvim\""

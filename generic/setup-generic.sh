@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
-source ../common/helper-functions.sh
-source ../common/constants.sh
+curl -O https://raw.github.com/xtremelabs/xlt-scripts-bash/master/common/helper-functions.sh 1>/dev/null 2>/dev/null
+source helper-functions.sh
+rm -rf helper-functions.sh
+
+curl -O https://raw.github.com/xtremelabs/xlt-scripts-bash/master/common/constants.sh 1>/dev/null 2>/dev/null
+source constants.sh
+rm -rf constants.sh
 
 ###############################
 
@@ -41,10 +46,12 @@ clt_image_location=""
 echo ""
 echo "=========="
 if [[ "$MAC_VERSION" == 10.8.* ]]
-then 
-   clt_image_location="../assets/command_line_tools_for_xcode_os_x_mountain_lion_aug_2012.dmg"
+then
+   curl -O $XCODE_CLT_LOC_MLION 1>/dev/null 2>/dev/null
+   clt_image_location=$XCODE_CLT_FILENAME_MLION
 else
-   clt_image_location="../assets/command_line_tools_for_xcode_os_x_lion_aug_2012.dmg"
+   curl -O $XCODE_CLT_LOC_LION 1>/dev/null 2>/dev/null
+   clt_image_location=$XCODE_CLT_FILENAME_LION
 fi
 
 continueInst="n"
@@ -92,6 +99,7 @@ command -v git >/dev/null 2>&1 || {
 	brew install git
 }
 echo "git is installed"
+curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/generic/gconfig.sh" 1>/dev/null 2>/dev/null
 chmod u+x gconfig.sh
 ./gconfig.sh
 
@@ -106,6 +114,7 @@ brew install wget
 #Setup Chrome
 echo ""
 echo "=========="
+curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/generic/setup-chrome.sh" 1>/dev/null 2>/dev/null
 chmod u+x setup-chrome.sh
 ./setup-chrome.sh
 
@@ -113,6 +122,7 @@ chmod u+x setup-chrome.sh
 #Setup Firefox
 echo ""
 echo "=========="
+curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/generic/setup-firefox.sh" 1>/dev/null 2>/dev/null
 chmod u+x setup-firefox.sh
 ./setup-firefox.sh
 
@@ -123,9 +133,16 @@ chmod u+x setup-firefox.sh
 # http://builds.xtremelabs.com
 # http://www.pivotaltracker.com
 # http://allocations.pivotallabs.com
-cp "../assets/Chrome Bookmarks.html" $HOME/Desktop
-cp "../assets/Firefox Bookmarks.html" $HOME/Desktop
-echo "Chrome and Firefox bookmarks copied to your Desktop - please reimport if required."
+
+curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/assets/Chrome Bookmarks.html" 1>/dev/null 2>/dev/null
+cp "Chrome Bookmarks.html" $HOME/Desktop
+rm -rf "Chrome Bookmarks.html"
+
+curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/assets/Firefox Bookmarks.html" 1>/dev/null 2>/dev/null
+cp "Firefox Bookmarks.html" $HOME/Desktop
+rm -rf "Firefox Bookmarks.html"
+
+echo "Chrome and Firefox bookmarks copied to your Desktop - please reimport into Bookmarks Toolbar if required."
 
 #Update Safari bookmarks
 #Currently not done as they are stored as separate files in <user>/Library/Caches/Metadata/Safari/Bookmarks and there's no safer way to export them than to backup those files

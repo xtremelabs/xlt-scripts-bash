@@ -12,9 +12,11 @@ while [[ "$reply" != '1' && "$reply" != '2' ]]; do
 done
 
 if [[ "$reply" == '1' ]]; then
+  curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/ruby/setup-rbenv.sh" 1>/dev/null 2>/dev/null
   chmod u+x setup-rbenv.sh
   ./setup-rbenv.sh
 elif [[ "$reply" == '2' ]]; then
+  curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/ruby/setup-rvm.sh" 1>/dev/null 2>/dev/null
   chmod u+x setup-rvm.sh
   ./setup-rvm.sh
 else
