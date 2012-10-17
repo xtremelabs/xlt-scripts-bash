@@ -52,11 +52,11 @@ fi
 # https://www.owasp.org/index.php/IOS_Developer_Cheat_Sheet
 # https://docs.urbanairship.com/display/DOCS/Home
 # https://developer.apple.com/library/ios
-curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Chrome%20iOS%20Bookmarks.html" -o "Chrome iOS Bookmarks.html" 1>/dev/null 2>/dev/null
+curl "http://assets.xtremelabs.com/xlt-scripts-bash/Chrome%20iOS%20Bookmarks.html" -o "Chrome iOS Bookmarks.html" 1>/dev/null 2>/dev/null
 cp "Chrome iOS Bookmarks.html" $HOME/Desktop
 rm -rf "Chrome iOS Bookmarks.html"
 
-curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Firefox%20iOS%20Bookmarks.html" -o "Firefox iOS Bookmarks.html" 1>/dev/null 2>/dev/null
+curl "http://assets.xtremelabs.com/xlt-scripts-bash/Firefox%20iOS%20Bookmarks.html" -o "Firefox iOS Bookmarks.html" 1>/dev/null 2>/dev/null
 cp "Firefox iOS Bookmarks.html" $HOME/Desktop
 rm -rf "Firefox iOS Bookmarks.html"
 
