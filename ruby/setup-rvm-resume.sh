@@ -57,11 +57,11 @@ echo ""
 echo "=========="
 if [[ "$MAC_VERSION" == 10.8.* ]]
 then
-   curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/assets/MacVim macosx 107 snapshot 64.app" 1>/dev/null 2>/dev/null
-   mvim_image_location="MacVim macosx 107 snapshot 64.app"
+   curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/MacVim%20macosx%20108%20snapshot%2065.app" 1>/dev/null 2>/dev/null
+   mvim_image_location="MacVim macosx 108 snapshot 65.app"
 elif [[ "$MAC_VERSION" == 10.7.* ]]
 then
-   curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/assets/MacVim macosx 107 snapshot 64.app" 1>/dev/null 2>/dev/null
+   curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/MacVim%20macosx%20107%20snapshot%2064.app" 1>/dev/null 2>/dev/null
    mvim_image_location="MacVim macosx 107 snapshot 64.app"
 else
    echo "Please install MacVim manually (e.g. visit https://github.com/b4winckler/macvim/downloads) as only Mountain Lion and Lion binaries are included as assets"
@@ -80,7 +80,7 @@ then
   git clone https://github.com/godlygeek/tabular   # Easy formatting for tables, useful for Cucumber features
   #go back to previous script dir and copy vim color assets from saved tomorrow-theme
   cd -
-  curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/assets/vim.zip" 1>/dev/null 2>/dev/null
+  curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/vim.zip" 1>/dev/null 2>/dev/null
   unzip vim.zip
   cp -R vim $HOME/.janus/tomorrow-theme
   rm -rf vim vim.zip

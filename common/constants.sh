@@ -5,12 +5,12 @@ RSA_KEY_LOC=$HOME/.ssh/id_rsa
 RSA_KEY_GITHUB_NAME_FIELD=" GitHub@"
 
 #October 2012 version
-XCODE_CLT_LOC_LION="http://adcdownload.apple.com/Developer_Tools/cltools_lion_from_xcode_4.5.1/xcode451cltools_10_76938201a.dmg"
-XCODE_CLT_FILENAME_LION="xcode451cltools_10_76938201a.dmg"
+XCODE_CLT_LOC_LION="http://assets.xtremelabs.com/xlt-scripts-bash/command_line_tools_for_xcode_451_os_x_lion_oct_2012.dmg"
+XCODE_CLT_FILENAME_LION="command_line_tools_for_xcode_451_os_x_lion_oct_2012.dmg"
 
 #October 2012 version
-XCODE_CLT_LOC_MLION="http://adcdownload.apple.com/Developer_Tools/command_line_tools_os_x_mountain_lion_for_xcode__october_2012/xcode451cltools_10_86938200a.dmg"
-XCODE_CLT_FILENAME_MLION="xcode451cltools_10_86938200a.dmg"
+XCODE_CLT_LOC_MLION="http://assets.xtremelabs.com/xlt-scripts-bash/command_line_tools_for_xcode_451_os_x_mountain_lion_oct_2012.dmg"
+XCODE_CLT_FILENAME_MLION="command_line_tools_for_xcode_451_os_x_mountain_lion_oct_2012.dmg"
 
 FIREFOX_VERSION="Firefox 15.0.1.dmg"
 
@@ -26,6 +26,8 @@ ECLIPSE_ARCHIVE_FILENAME="eclipse-SDK-4.2-macosx-cocoa-x86_64.tar.gz"
 
 #No trailing slashes for Eclipse/Android SDK install locations
 ECLIPSE_INSTALL_LOC="/Applications/eclipse"
+ANDROID_SDK_ZIP_LOC="http://assets.xtremelabs.com/xlt-scripts-bash/android-sdk_r20.0.3-macosx.zip"
+ANDROID_SDK_ZIP_FILENAME="android-sdk_r20.0.3-macosx.zip"
 ANDROID_SDK_INSTALL_LOC="$HOME/android-sdks"
 ANDROID_UPDATE_FILTER_SDK="platform-tools,android-16,extra-android-support"
 ANDROID_UPDATE_FILTER_DOCS="system-image,doc,source,sample"
@@ -33,9 +35,9 @@ ANDROID_UPDATE_FILTER_DOCS="system-image,doc,source,sample"
 #----
 #iOS specific script constants
 #October 2012 version
-XCODE_LOC="http://adcdownload.apple.com/Developer_Tools/xcode_4.5.1/xcode4510417539a.dmg"
-XCODE_FILENAME="xcode4510417539a.dmg"
+XCODE_LOC="http://assets.xtremelabs.com/xlt-scripts-bash/xcode_451_lion_mlion.dmg"
+XCODE_FILENAME="xcode_451_lion_mlion.dmg"
 
 #Late July 2012 version
-XCODE_LINK_COND_LOC="http://adcdownload.apple.com/Developer_Tools/hardware_io_tools_for_xcode_4.4__late_july_2012/xcode44hwiotools6938115a.dmg"
+XCODE_LINK_COND_LOC="http://assets.xtremelabs.com/xlt-scripts-bash/xcode44hwiotools6938115a.dmg"
 XCODE_LINK_COND_FILENAME="xcode44hwiotools6938115a.dmg"

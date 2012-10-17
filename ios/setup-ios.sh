@@ -15,7 +15,7 @@ if [ ! -d /Applications/Xcode ]
 then
   #TODO: Better check for XCode version...
   curl -O $XCODE_LOC 1>/dev/null 2>/dev/null
-  hdutil mount $XCODE_FILENAME
+  hdiutil mount "../assets/xcode_451_lion_mlion.dmg"
   sudo cp -R "/Volumes/Xcode" /Applications
 fi
 
@@ -24,11 +24,23 @@ fi
 #Installed with xCode
 
 #Install XCode Command Line Tools
-#Installed by General Environment Setup script - please run that or install manually through DMG loc in constants script
+#Installed by General Environment Setup script - please run that or install manually through DMG loc in constants script (XCODE_CLT_LOC_<VERSION>)
 
-#TODO: Install gitx
+# Install gitx
+if [ ! -d /Applications/GitX.app ]
+then
+  curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/GitX.app" 1>/dev/null 2>/dev/null
+  sudo cp GitX.app /Applications
+fi
 
-#TODO: Install Hardware IO Link Conditioner thru XCODE_LINK_COND_LOC
+# Install Hardware IO Link Conditioner thru XCODE_LINK_COND_LOC
+if [ ! -e "/Applications/Hardware IO Tools" ]
+then
+  curl -O $XCODE_LINK_COND_LOC 1>/dev/null 2>/dev/null
+  hdiutil mount $XCODE_LINK_COND_FILENAME
+  sudo mkdir -p "/Applications/Hardware IO Tools"
+  sudo cp -R "/Volumes/Hardware IO Tools" "/Applications/Hardware IO Tools"
+fi
 
 #TODO: Install script for resizing assets
 #echo "Installing script for resizing assets"
@@ -37,11 +49,12 @@ fi
 #Bookmarks
 # https://www.owasp.org/index.php/IOS_Developer_Cheat_Sheet
 # https://docs.urbanairship.com/display/DOCS/Home
-curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/assets/Chrome iOS Bookmarks.html" 1>/dev/null 2>/dev/null
+# https://developer.apple.com/library/ios
+curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Chrome iOS Bookmarks.html" 1>/dev/null 2>/dev/null
 cp "Chrome iOS Bookmarks.html" $HOME/Desktop
 rm -rf "Chrome iOS Bookmarks.html"
 
-curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/assets/Firefox iOS Bookmarks.html" 1>/dev/null 2>/dev/null
+curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Firefox iOS Bookmarks.html" 1>/dev/null 2>/dev/null
 cp "Firefox iOS Bookmarks.html" $HOME/Desktop
 rm -rf "Firefox iOS Bookmarks.html"
 
@@ -49,4 +62,4 @@ echo "Chrome and Firefox iOS bookmarks copied to your Desktop - please reimport 
 
 echo "----"
 echo "iOS setup all done."
-#exit
+exit

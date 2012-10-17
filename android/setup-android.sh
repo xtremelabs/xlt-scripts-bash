@@ -52,8 +52,8 @@ then
   fi
 fi
 mkdir -p $ANDROID_SDK_INSTALL_LOC
-curl -O https://raw.github.com/xtremelabs/xlt-scripts-bash/master/assets/android-sdk_r20.0.3-macosx.zip 1>/dev/null 2>/dev/null
-unzip -o android-sdk_r20.0.3-macosx.zip
+curl -O $ANDROID_SDK_ZIP_LOC 1>/dev/null 2>/dev/null
+unzip -o $ANDROID_SDK_ZIP_FILENAME
 sudo cp -R android-sdk-macosx/* $ANDROID_SDK_INSTALL_LOC
 
 echo "Updating Android SDK"
@@ -143,11 +143,11 @@ fi
 #Bookmarks
 # http://www.androidpatterns.com/
 # http://developer.android.com/reference/packages.html
-curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/assets/Chrome Bookmarks.html" 1>/dev/null 2>/dev/null
+curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Chrome Bookmarks.html" 1>/dev/null 2>/dev/null
 cp "Chrome Android Bookmarks.html" $HOME/Desktop
 rm -rf "Chrome Android Bookmarks.html"
 
-curl -O "https://raw.github.com/xtremelabs/xlt-scripts-bash/master/assets/Firefox Bookmarks.html" 1>/dev/null 2>/dev/null
+curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Firefox Bookmarks.html" 1>/dev/null 2>/dev/null
 cp "Firefox Android Bookmarks.html" $HOME/Desktop
 rm -rf "Firefox Android Bookmarks.html"
 echo "Chrome and Firefox Android bookmarks copied to your Desktop - please reimport into Bookmarks Toolbar if required."
