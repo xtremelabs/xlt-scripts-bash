@@ -52,7 +52,7 @@ then
   fi
 fi
 mkdir -p $ANDROID_SDK_INSTALL_LOC
-curl -O $ANDROID_SDK_ZIP_LOC 1>/dev/null 2>/dev/null
+curl -O $ANDROID_SDK_ZIP_LOC 1>/dev/null
 unzip -o $ANDROID_SDK_ZIP_FILENAME
 sudo cp -R android-sdk-macosx/* $ANDROID_SDK_INSTALL_LOC
 

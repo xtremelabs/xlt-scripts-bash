@@ -14,9 +14,10 @@ echo "Installing xCode"
 if [ ! -d /Applications/Xcode ]
 then
   #TODO: Better check for XCode version...
-  curl -O $XCODE_LOC 1>/dev/null 2>/dev/null
-  hdiutil mount "../assets/xcode_451_lion_mlion.dmg"
+  curl -O $XCODE_LOC 1>/dev/null
+  hdiutil mount $XCODE_FILENAME
   sudo cp -R "/Volumes/Xcode" /Applications
+  hdiutil unmount "/Volumes/Xcode" 2>/dev/null
 fi
 
 #Install AppleScript 
@@ -36,10 +37,11 @@ fi
 # Install Hardware IO Link Conditioner thru XCODE_LINK_COND_LOC
 if [ ! -e "/Applications/Hardware IO Tools" ]
 then
-  curl -O $XCODE_LINK_COND_LOC 1>/dev/null 2>/dev/null
+  curl -O $XCODE_LINK_COND_LOC 1>/dev/null
   hdiutil mount $XCODE_LINK_COND_FILENAME
   sudo mkdir -p "/Applications/Hardware IO Tools"
   sudo cp -R "/Volumes/Hardware IO Tools" "/Applications/Hardware IO Tools"
+  hdiutil unmount "/Volumes/Hardware IO Tools" 2>/dev/null
 fi
 
 #TODO: Install script for resizing assets

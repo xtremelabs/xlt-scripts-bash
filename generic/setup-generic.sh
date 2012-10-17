@@ -47,10 +47,10 @@ echo ""
 echo "=========="
 if [[ "$MAC_VERSION" == 10.8.* ]]
 then
-   curl -O $XCODE_CLT_LOC_MLION 1>/dev/null 2>/dev/null
+   curl -O $XCODE_CLT_LOC_MLION 1>/dev/null
    clt_image_location=$XCODE_CLT_FILENAME_MLION
 else
-   curl -O $XCODE_CLT_LOC_LION 1>/dev/null 2>/dev/null
+   curl -O $XCODE_CLT_LOC_LION 1>/dev/null
    clt_image_location=$XCODE_CLT_FILENAME_LION
 fi
 
