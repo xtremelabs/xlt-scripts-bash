@@ -143,11 +143,11 @@ fi
 #Bookmarks
 # http://www.androidpatterns.com/
 # http://developer.android.com/reference/packages.html
-curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Chrome Bookmarks.html" 1>/dev/null 2>/dev/null
+curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Chrome%20Android%20Bookmarks.html" -o "Chrome Android Bookmarks.html"  1>/dev/null 2>/dev/null
 cp "Chrome Android Bookmarks.html" $HOME/Desktop
 rm -rf "Chrome Android Bookmarks.html"
 
-curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Firefox Bookmarks.html" 1>/dev/null 2>/dev/null
+curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Firefox%20Android%20Bookmarks.html" -o "Firefox Android Bookmarks.html" 1>/dev/null 2>/dev/null
 cp "Firefox Android Bookmarks.html" $HOME/Desktop
 rm -rf "Firefox Android Bookmarks.html"
 echo "Chrome and Firefox Android bookmarks copied to your Desktop - please reimport into Bookmarks Toolbar if required."

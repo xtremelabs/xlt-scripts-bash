@@ -134,11 +134,11 @@ chmod u+x setup-firefox.sh
 # http://www.pivotaltracker.com
 # http://allocations.pivotallabs.com
 
-curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Chrome Bookmarks.html" 1>/dev/null 2>/dev/null
+curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Chrome%20Bookmarks.html" -o "Chrome Bookmarks.html" 1>/dev/null 2>/dev/null
 cp "Chrome Bookmarks.html" $HOME/Desktop
 rm -rf "Chrome Bookmarks.html"
 
-curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Firefox Bookmarks.html" 1>/dev/null 2>/dev/null
+curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Firefox%20Bookmarks.html" -o "Firefox Bookmarks.html" 1>/dev/null 2>/dev/null
 cp "Firefox Bookmarks.html" $HOME/Desktop
 rm -rf "Firefox Bookmarks.html"
 
