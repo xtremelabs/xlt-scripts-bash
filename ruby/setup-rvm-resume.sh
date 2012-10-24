@@ -53,21 +53,26 @@ fi" >> $HOME/.bash_profile
 MAC_VERSION=$(defaults read loginwindow SystemVersionStampAsString);
 
 mvim_image_location=""
+mvim_zip_location=""
 echo ""
 echo "=========="
 if [[ "$MAC_VERSION" == 10.8.* ]]
 then
-   curl "http://assets.xtremelabs.com/xlt-scripts-bash/MacVim%20macosx%20108%20snapshot%2065.app" -o "MacVim macosx 108 snapshot 65.app" 1>/dev/null 2>/dev/null
+   curl "http://assets.xtremelabs.com/xlt-scripts-bash/MacVim%20macosx%20108%20snapshot%2065.zip" -o "MacVim macosx 108 snapshot 65.zip" 1>/dev/null 2>/dev/null
    mvim_image_location="MacVim macosx 108 snapshot 65.app"
+   mvim_zip_location="MacVim macosx 108 snapshot 65.zip"
 elif [[ "$MAC_VERSION" == 10.7.* ]]
 then
-   curl "http://assets.xtremelabs.com/xlt-scripts-bash/MacVim%20macosx%20107%20snapshot%2064.app" -o "MacVim macosx 107 snapshot 64.app" 1>/dev/null 2>/dev/null
+   curl "http://assets.xtremelabs.com/xlt-scripts-bash/MacVim%20macosx%20107%20snapshot%2064.zip" -o "MacVim macosx 107 snapshot 64.zip" 1>/dev/null 2>/dev/null
    mvim_image_location="MacVim macosx 107 snapshot 64.app"
+   mvim_zip_location="MacVim macosx 108 snapshot 65.zip"
 else
    echo "Please install MacVim manually (e.g. visit https://github.com/b4winckler/macvim/downloads) as only Mountain Lion and Lion binaries are included as assets"
 fi
 echo "Copying MacVim - please enter your root password"
+unzip -o "$mvim_zip_location"
 sudo cp -R "$mvim_image_location" "/Applications/MacVim.app"
+rm -rf "$mvim_zip_location" "$mvim_image_location"
 
 if [[ $? -eq 0 || -d /Applications/MacVim.app ]]
 then
