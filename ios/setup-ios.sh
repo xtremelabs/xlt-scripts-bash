@@ -44,9 +44,9 @@ then
   curl -O $XCODE_LINK_COND_LOC 1>/dev/null
   hdiutil mount $XCODE_LINK_COND_FILENAME
   sudo mkdir -p "/Applications/Hardware IO Tools"
-  sudo cp -R "/Volumes/Hardware IO Tools" "/Applications/Hardware IO Tools"
+  sudo cp -R "/Volumes/Hardware IO Tools" "/Applications"
   hdiutil unmount "/Volumes/Hardware IO Tools" 2>/dev/null
-  open "/Volumes/Hardware IO Tools/Network Link Conditioner.prefPane"
+  open "/Applications/Hardware IO Tools/Network Link Conditioner.prefPane"
 fi
 
 #TODO: Install script for resizing assets if it's ever found...
@@ -63,7 +63,7 @@ then
   echo "Installing Developer Color Picker"
   curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/developercolorpicker.zip" 1>/dev/null 2>/dev/null
   unzip -o developercolorpicker.zip
-  sudo cp "Developer Color Picker/DeveloperColorPicker.colorPicker" $HOME/Library/ColorPickers
+  sudo cp -R "Developer Color Picker/DeveloperColorPicker.colorPicker" $HOME/Library/ColorPickers
   rm -rf developercolorpicker.zip "Developer Color Picker"
 fi
 
@@ -73,6 +73,7 @@ then
   echo "Installing jq for JSON parsing (see http://stedolan.github.com/jq/tutorial/ for tutorial)"
   curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/jq" 1>/dev/null 2>/dev/null
   sudo cp jq /usr/bin
+  sudo chmod ugo+x /usr/bin/jq
   rm -rf jq
 fi
 
@@ -82,7 +83,7 @@ then
   echo "Installing crashlytics client"
   curl -O "http://assets.xtremelabs.com/xlt-scripts-bash/Crashlytics.zip" 1>/dev/null 2>/dev/null
   unzip -o Crashlytics.zip
-  sudo cp Crashlytics.app /Applications
+  sudo cp -R Crashlytics.app /Applications
   rm -rf Crashlytics.app Crashlytics.zip
 fi
 
