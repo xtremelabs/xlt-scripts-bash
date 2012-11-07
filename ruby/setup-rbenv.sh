@@ -71,6 +71,10 @@ echo "Installing common databases and tools"
 brew install postgres mysql mongodb redis memcached
 
 
+#Set up mysql database to run as user account
+mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
+
+
 echo ""
 echo "=========="
 

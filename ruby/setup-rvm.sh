@@ -38,8 +38,8 @@ then
   echo "Installing Ruby $RUBY_VERSION..."
   if [[ ! -d "$HOME/.rbenv/versions/$RUBY_VERSION" ]]
   then
-    rvm reload
     rvm install "$RUBY_VERSION"
+    rvm reload
     rvm use "$RUBY_VERSION"
     ruby -v
   else
@@ -60,6 +60,8 @@ echo "=========="
 echo "Installing common databases and tools"
 brew install postgres mysql mongodb redis memcached
 
+#Set up mysql database to run as user account
+mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
 
 echo ""
 echo "=========="
