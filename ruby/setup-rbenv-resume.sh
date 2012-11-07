@@ -65,7 +65,7 @@ elif [[ "$MAC_VERSION" == 10.7.* ]]
 then
    curl "http://assets.xtremelabs.com/xlt-scripts-bash/MacVim%20macosx%20107%20snapshot%2064.zip" -o "MacVim macosx 107 snapshot 64.zip" 1>/dev/null 2>/dev/null
    mvim_image_location="MacVim macosx 107 snapshot 64.app"
-   mvim_zip_location="MacVim macosx 108 snapshot 64.zip"
+   mvim_zip_location="MacVim macosx 107 snapshot 64.zip"
 else
    echo "Please install MacVim manually (e.g. visit https://github.com/b4winckler/macvim/downloads) as only Mountain Lion and Lion binaries are included as assets"
 fi

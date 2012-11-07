@@ -35,8 +35,20 @@ Note: Do NOT run the script as sudo. Homebrew will refuse to install as root and
 
 # Ruby: What it does
 -------------
+Requires: XCode (or XCode tools) to be setup for brew (i.e. run generic script first)
+-------------
 Installs everything http://tech.xtremelabs.com/how-to-setup-your-mac-for-rails-development/ mentions either with RVM or RBENV (selected on startup)
 
 For subsequent runs of the script, most applications detect if they are already installed, and user is prompted whether they want to delete and replace their bash_profile script since the script concatenates most entries programs require.
 
 Users are encouraged to check application caveats through brew info <application name> to see if they need to perform any additional steps to configure the installation. 
+
+
+# Android: What it does
+-------------
+Installs Eclipse 4.2 (Juno), Android SDK (r20) as well as ADT, Color Theme, PMD and FindBugs plugins. Copies some common Android bookmarks so user can import into major browsers too.
+
+
+# iOS: What it does
+-------------
+Installs XCode, Hardware IO Link Conditioner, gitx, DeveloperColorPicker, jq (JSON parsing tool) and Crashlytics client. Copies some common Android bookmarks so user can import into major browsers too.
