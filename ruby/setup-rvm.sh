@@ -39,7 +39,7 @@ then
   if [[ ! -d "$HOME/.rbenv/versions/$RUBY_VERSION" ]]
   then
     rvm install "$RUBY_VERSION"
-    rbenv global "$RUBY_VERSION"
+    rvm use "$RUBY_VERSION"
     ruby -v
   else
     echo "Ruby version $RUBY_VERSION already installed locally."
