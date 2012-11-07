@@ -38,6 +38,7 @@ then
   echo "Installing Ruby $RUBY_VERSION..."
   if [[ ! -d "$HOME/.rbenv/versions/$RUBY_VERSION" ]]
   then
+    rvm reload
     rvm install "$RUBY_VERSION"
     rvm use "$RUBY_VERSION"
     ruby -v
