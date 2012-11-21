@@ -1,5 +1,16 @@
 This is a collection of scripts to quickly set up your environment on Mac OS X.
 
+# Installation/TLDR Instructions:
+--------------
+Generic environment setup script: curl -Lo- https://raw.github.com/xtremelabs/xlt-scripts-bash/master/generic/setup-generic.sh | bash
+
+Ruby script (note: some packages may require further setup for listed
+Homebrew caveats): curl -Lo- https://raw.github.com/xtremelabs/xlt-scripts-bash/master/ruby/setup-ruby.sh | bash
+
+Android script: curl -Lo- https://raw.github.com/xtremelabs/xlt-scripts-bash/master/android/setup-android.sh | bash
+
+iOS script: curl -Lo- https://raw.github.com/xtremelabs/xlt-scripts-bash/master/ios/setup-ios.sh | bash
+
 # Generic: What it does
 --------------
 It will do the following, if necessary:
