@@ -76,6 +76,7 @@ rm -rf "$mvim_zip_location" "$mvim_image_location"
 
 if [[ $? -eq 0 || -d /Applications/MacVim.app ]]
 then
+  mkdir -p $HOME/Applications
   #install Janus library of plugins
   curl -Lo- https://bit.ly/janus-bootstrap | bash
 
