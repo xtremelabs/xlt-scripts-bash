@@ -31,8 +31,8 @@ else
 fi
 
 #Copy key contents and open github config page
-echo "Copying public key to clipboard. Paste it into your Github account ..."
-[[ -f $HOME/.ssh/github_rsa.pub ]] && cat $HOME/.ssh/github_rsa.pub | pbcopy
+echo "Trying to copy public key to clipboard. Paste it into your Github account or copy manually from keys in ~/.ssh/ ..."
+([[ -f $HOME/.ssh/*.pub ]] && cat $HOME/.ssh/github_rsa.pub | pbcopy) || (cat "$RSA_KEY_LOC.pub" | pbcopy)
 open https://github.com/account/ssh
 
 # Delay for 5 seconds until github account page opens
