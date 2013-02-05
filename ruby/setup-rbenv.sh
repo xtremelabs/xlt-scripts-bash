@@ -65,6 +65,11 @@ else
   echo "Rbenv installation failed. Please retry later."
 fi
 
+#Installing Rails
+echo ""
+echo "Installing Rails"
+sudo gem install rails
+
 echo ""
 echo "=========="
 echo "Installing common databases and tools"
