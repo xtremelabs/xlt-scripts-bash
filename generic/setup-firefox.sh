@@ -16,11 +16,11 @@ then
 else
 	install_success="n"
 	echo "Downloading Firefox..."
-	wget http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/latest/mac/en-US/"$FIREFOX_VERSION"
+	wget "http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/18.0.1/mac/en-US/Firefox 18.0.1.dmg"
 	url_verify "Firefox"
 	echo "Installing Firefox..."
 	#install firefox
-	hdiutil mount "$FIREFOX_VERSION"
+	hdiutil mount "Firefox 18.0.1.dmg"
 	sudo cp -R "/Volumes/Firefox/Firefox.app" /Applications
 
 	if [[ $? -eq 0 ]]
@@ -30,7 +30,7 @@ else
 	fi
 
 	hdiutil unmount "/Volumes/Firefox/"
-	rm -rf "$FIREFOX_VERSION"
+	rm -rf "Firefox 18.0.1.dmg"
 
 	if [ $install_success == "y" ]
 	then

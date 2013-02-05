@@ -12,11 +12,11 @@ XCODE_CLT_FILENAME_LION="command_line_tools_for_xcode_451_os_x_lion_oct_2012.dmg
 XCODE_CLT_LOC_MLION="http://assets.xtremelabs.com/xlt-scripts-bash/command_line_tools_for_xcode_451_os_x_mountain_lion_oct_2012.dmg"
 XCODE_CLT_FILENAME_MLION="command_line_tools_for_xcode_451_os_x_mountain_lion_oct_2012.dmg"
 
-FIREFOX_VERSION="Firefox 15.0.1.dmg"
+#FIREFOX_VERSION="Firefox 18.0.1.dmg"
 
 #----
 #Ruby specific script constants
-RUBY_VERSION="1.9.3-p194"
+RUBY_VERSION="1.9.3"
 TOTALTERMINAL="TotalTerminal-1.3.dmg"
 
 #----
