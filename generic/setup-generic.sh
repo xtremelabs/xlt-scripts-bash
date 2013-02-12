@@ -64,7 +64,12 @@ while [[ $continueInst == 'n' ]]; do
   if [ $continueInst == "y" ]
   then
     echo "Continuing installation"
-    hdiutil unmount "/Volumes/Command Line Tools (Lion)/"
+    if [[ "$MAC_VERSION" == 10.8.* ]]
+    then
+      hdutil unmount "/Volumes/Command Line Tools (Mountain Lion)/"
+    else
+      hdiutil unmount "/Volumes/Command Line Tools (Lion)/"
+    fi
   else
     #echo "Please install Command Line Tools from the mounted image"
     echo "Retrying to install Command Line Tools"
